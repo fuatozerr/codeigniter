@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/cms/panel/';
 
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -488,7 +489,7 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = '2018';
 
 /*
 |--------------------------------------------------------------------------
