@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Product extends CI_Controller {
 
 	public $viewfolder="";
 
@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller {
 
 		parent::__construct();
 
-		$this->viewfolder="dashboard_v";
+		$this->viewfolder="product_v";
 	}
 
 
@@ -19,8 +19,8 @@ class Dashboard extends CI_Controller {
 
 		$viewData->viewfolder=$this->viewfolder;
 
-		$viewData->Subviewfolder="list";
+		$viewData->SubViewfolder="list";
 
-		$this->load->view("{$this->viewfolder}/{$viewData->Subviewfolder}/index",$viewData);
+		$this->load->view("{$this->viewfolder}/{$viewData->SubViewfolder}/index",$viewData);
 	}
 }
