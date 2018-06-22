@@ -10,6 +10,7 @@ class Product extends CI_Controller {
 		parent::__construct();
 
 		$this->viewfolder="product_v";
+		$this->load->model("Product_model");
 	}
 
 
@@ -17,9 +18,17 @@ class Product extends CI_Controller {
 	{
 		$viewData=new stdClass();
 
-		$viewData->viewfolder=$this->viewfolder;
+        /* Tablo listele */
 
-		$viewData->SubViewfolder="list";
+        $items= $this->Product_model->get_all();
+
+        /* View'e gönderilcek veriler */
+
+        $viewData->viewfolder=$this->viewfolder;
+
+        $viewData->SubViewfolder="list";
+
+        $viewData->items=$items;
 
 		$this->load->view("{$this->viewfolder}/{$viewData->SubViewfolder}/index",$viewData);
 	}
