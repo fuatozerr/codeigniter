@@ -1,46 +1,61 @@
 <div class="row">
-
+    <div class="col-md-12">
+        <h4 class="m-b-lg">
+            Ürün Listesi
+            <a href="<?php echo base_url("product/new_form"); ?>" class="btn btn-outline btn-primary btn-xs pull-right"> <i class="fa fa-plus"></i> Yeni Ekle</a>
+        </h4>
+    </div><!-- END column -->
     <div class="col-md-12">
         <div class="widget p-lg">
-            <h4 class="m-b-lg">Ürünleri Listele
-                <a href="#" class="btn btn-outline btn-primary btn-sm pull-right"><i class="fa fa-plus"></i> Yeni Ekle</a></h4>
 
             <?php if(empty($items)) { ?>
-            <div class="alert alert-info text-center">
-                <p>Kayıt bulunamadı. Veritabanından çekince burası otomatik silinecek.</p>
-            </div> <?php  } else {?>
-            <table class="table table-hover ">
-                <thead>
 
-                <th>#id</th>
-                <th>Url</th>
-                <th>Başlık</th>
+                <div class="alert alert-info text-center">
+                    <p>Burada herhangi bir veri bulunmamaktadır. Eklemek için lütfen <a href="<?php echo base_url("product/new_form"); ?>">tıklayınız</a></p>
+                </div>
 
-                <th>Açıklama</th>
+            <?php } else { ?>
 
-                <th>Durum</th>
-                <th>İşlem</th>
-                </thead>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <th>#id</th>
+                        <th>url</th>
+                        <th>Başlık</th>
+                        <th>Açıklama</th>
+                        <th>Durumu</th>
+                        <th>İşlem</th>
+                    </thead>
+                    <tbody>
 
-                <tbody>
-                <?php  foreach ($items as $listele) {?>
-                <tr>
+                        <?php foreach($items as $item) { ?>
 
-                    <td>#<?php echo $listele->id ?></td>
-                    <td><?php echo $listele->url ?></td>
-                    <td><?php echo $listele->title ?></td>
-                    <td><?php echo $listele->description ?></td>
-                    <td><input 
-                               type="checkbox"
-                               data-switchery
-                               data-color="#01c469"
-                               <?php echo ($listele->isActive) ? "checked" :"" ; ?> /></td>
-                    <td><a href="#" class="btn btn-sm btn-outline btn-danger"><i class="fa fa-warning"></i>Sil</a>
-                        <a href="#" class="btn btn-sm btn-outline btn-primary"><i class="fa fa-pencil-square-o"></i>Güncelle</a></td>
-                </tr> <?php }?>
-                </tbody>
-            </table> <?php } ?>
+                            <tr>
+                                <td>#<?php echo $item->id; ?></td>
+                                <td><?php echo $item->url; ?></td>
+                                <td><?php echo $item->title; ?></td>
+                                <td><?php echo $item->description; ?></td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        data-switchery
+                                        data-color="#10c469"
+                                        <?php echo ($item->isActive) ? "checked" : ""; ?>
+                                    />
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-danger btn-outline"><i class="fa fa-trash"></i> Sil</a>
+                                    <a href="#" class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i> Düzenle</a>
+                                </td>
+                            </tr>
+
+                        <?php } ?>
+
+                    </tbody>
+
+                </table>
+
+            <?php } ?>
+
         </div><!-- .widget -->
     </div><!-- END column -->
-
 </div>

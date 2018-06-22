@@ -3,24 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
-	public $viewfolder="";
+    public $viewFolder = "";
 
-	public function __construct(){
+    public function __construct()
+    {
+        parent::__construct();
 
-		parent::__construct();
+        $this->viewFolder = "dashboard_v";
+    }
 
-		$this->viewfolder="dashboard_v";
-	}
-
-
-	public function index()
+    public function index()
 	{
-		$viewData=new stdClass();
+	    $viewData = new stdClass();
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "list";
 
-		$viewData->viewfolder=$this->viewfolder;
-
-		$viewData->Subviewfolder="list";
-
-		$this->load->view("{$this->viewfolder}/{$viewData->Subviewfolder}/index",$viewData);
+		$this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 	}
 }

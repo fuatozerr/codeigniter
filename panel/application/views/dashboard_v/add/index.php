@@ -23,7 +23,7 @@
     <main id="app-main" class="app-main">
         <div class="wrap">
             <section class="app-content">
-                <?php $this->load->view("{$viewfolder}/{$Subviewfolder}/content"); ?>
+                <?php $this->load->view("dashboard_v/content"); ?>
             </section><!-- #dash-content -->
         </div><!-- .wrap -->
 
