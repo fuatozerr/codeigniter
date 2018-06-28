@@ -52,7 +52,7 @@ class Product extends CI_Controller
 
         $this->form_validation->set_message(
             array(
-                "required"=> "{field} bırakılamaz" //başlık yerine dinamik otomatik gelir
+                "required"=> "{field} boş bırakılamaz" //başlık yerine dinamik otomatik gelir
             )
         );
 
@@ -64,8 +64,13 @@ class Product extends CI_Controller
         }
             else
             {
-                echo validation_errors();
-                //echo "ters gitt";
+                $viewData = new stdClass();
+
+                /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+                $viewData->viewFolder = $this->viewFolder;
+                $viewData->subViewFolder = "add";
+                $viewData->form_validation=true;
+                $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
             }
 
 
