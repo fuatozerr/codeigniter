@@ -46,7 +46,30 @@ class Product extends CI_Controller
 
     public function save(){
 
-        echo "saved";
+        $this->load->library("form_validation");
+
+        $this->form_validation->set_rules("title","Başlık","required");
+
+        $this->form_validation->set_message(
+            array(
+                "required"=> "{field} bırakılamaz" //başlık yerine dinamik otomatik gelir
+            )
+        );
+
+        $validate=$this->form_validation->run();
+
+
+        if($validate){
+            echo "kayit basarili";
+        }
+            else
+            {
+                echo validation_errors();
+                //echo "ters gitt";
+            }
+
+
+        //echo "saved";
 
     }
 
